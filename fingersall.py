@@ -3,7 +3,7 @@ import time
 from subprocess import call
 import requests
 import threading
-import commands
+import stoneCommands
 import fingerswitchtoggle
 
 # set pinmode to BCM layout for RPi
@@ -62,32 +62,32 @@ def selectstone():
 			if GPIO.input(fswitchpoint)==1:
 				GPIO.output(ledpurple, 1)
 				activestone["Power"]=1
-				commands.powersound()
+				#stoneCommands.powersound()
 				start = time.time()
 			if GPIO.input(fswitchthm)==1:
 				GPIO.output(ledgreen, 1)
 				activestone["Time"]=1
-				commands.timesound()
+				#stoneCommands.timesound()
 				start = time.time()
 			if GPIO.input(fswitchpin)==1:
 				GPIO.output(ledorange, 1)
 				activestone["Soul"]=1
-				commands.soulsound()
+				#stoneCommands.soulsound()
 				start = time.time()
 			if GPIO.input(fswitchmid)==1:
 				GPIO.output(ledblue, 0)
 				activestone["Space"]=1
-				commands.spacesound()
+				#stoneCommands.spacesound()
 				start = time.time()
 			if GPIO.input(fswitchrng)==1:
 				GPIO.output(ledred, 1)
 				activestone["Reality"]=1
-				commands.realitysound()
+				#stoneCommands.realitysound()
 				start = time.time()
 			if GPIO.input(fswitchmind)==1:
 				GPIO.output(ledyellow, 0)
 				activestone["Mind"]=1
-				commands.realitysound()
+				#stoneCommands.realitysound()
 				start = time.time()
 
 
@@ -124,7 +124,7 @@ def fist():
 				if activeswitch[switch] == 1:
 					count +=1
 			if count == 5:
-				call(["aplay", "/home/pi/Documents/spacestonefirst.wav"])
+				call(["aplay", "/home/Gauntlet/GauntEnv/spacestonefirst.wav"])
 				print("Stones Engaged")
 				return
 
@@ -141,7 +141,7 @@ if __name__ == "__main__":
 		#fingerswitchtoggle.fingerswitch()
 		selectstone()
 		fist()
-		commands.sendcommand(activestone)
+		stoneCommands.sendcommand(activestone)
 
 		print(("Stone Status: {}").format(activestone))
 

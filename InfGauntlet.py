@@ -3,7 +3,7 @@ import time
 from subprocess import call
 import requests
 from multiprocessing import Process
-import commands
+import stoneCommands
 import fingerswitchtoggle
 
 GPIO.setmode(GPIO.BCM)
@@ -28,11 +28,11 @@ pwmleds =[]
 
 for led in leds:
 	GPIO.setup(led,GPIO.OUT)
-	
+
 for switch in fswitch:
 	GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-	
-	
+
+
 activestone ={"Soul":0,"Power":0,"Space":0,"Reality":0, "Mind":0, "Time":0}
 activeswitch= {"Index":0,"Thumb":0, "Middle":0, "Ring":0, "Pinky":0}
 
@@ -43,7 +43,7 @@ def ledsoff():
 	GPIO.output(ledyellow,1)
 
 def fadeinout(ledspmw):
-	
+
 	try:
 		for i in ledspmw:
 			i.start(0)
@@ -58,14 +58,14 @@ def fadeinout(ledspmw):
 				time.sleep(0.15)
 	except KeyboardInterrupt:
 		return
-				
-	
+
+
 def selectstone():
 
 	start = time.time()
-	
+
    	try:
-	
+
 		print("Select Stones...")
 		while time.time() < start + 4 :
 			if GPIO.input(fswitchpoint)==1:
@@ -103,29 +103,29 @@ def selectstone():
 				activestone["Mind"]=1
 				commands.realitysound()
 				start = time.time()
-				pwmleds.append(GPIO.PWM(ledyellow,100))	
+				pwmleds.append(GPIO.PWM(ledyellow,100))
 			if sum(activestone.values()) == 0:
 				start=time.time()
-				
-			
+
+
 	except KeyboardInterrupt:
 		pass
 		print("exiting loop")
-	
-	finally:	
+
+	finally:
 		print ("Stone(s) selected")
 		for stone in activestone:
 			if activestone[stone] == 1:
 				print("{} is active!").format(stone)
 		print(pwmleds)
 		return activestone, pwmleds
-		
-		
+
+
 def fist(ledpwms):
 	try:
 		p = Process(target=fadeinout, args=(ledpwms,))
 		p.start()
-		
+
 		print("Ready to Activate")
 		while True:
 			if GPIO.input(fswitchpoint)==1:
@@ -138,7 +138,7 @@ def fist(ledpwms):
 				activeswitch["Middle"]=1
 			if GPIO.input(fswitchrng)==1:
 				activeswitch["Ring"]=1
-			count = 0	
+			count = 0
 			for switch in activeswitch:
 				if activeswitch[switch] == 1:
 					count +=1
@@ -146,17 +146,17 @@ def fist(ledpwms):
 				p.terminate()
 				call(["aplay", "/home/Gauntlet/GauntEnv/spacestonefirst.wav"])
 				print("Stones Engaged")
-				
+
 				return
-			 
-				
+
+
 	except KeyboardInterrupt:
 			return
 
-if __name__ == "__main__":			
-	
+if __name__ == "__main__":
+
 	try:
-	
+
 		while True:
 			ledsoff()
 			pwmleds = []
@@ -167,15 +167,11 @@ if __name__ == "__main__":
 			commands.sendcommand(activestone)
 			print(("Stone Status: {}").format(activestone))
 			time.sleep(3)
-			
-			
+
+
 	except KeyboardInterrupt:
 			pass
 			print("Closing program and cleaning up pins")
-			
+
 	finally:
 		GPIO.cleanup()
-
-		
-
-	

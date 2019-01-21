@@ -6,7 +6,7 @@ import time
 import json
 
 with open('deviceDict.txt') as devices:
-	device = json.load(f)
+	device = json.load(devices)
 
 def lightswitch():
 	return
@@ -75,34 +75,36 @@ def sendcommand(engagedstones):
 	if engagedstones["Reality"] and engagedstones["Soul"]:
 		pass
 	if engagedstones["Power"] and engagedstones["Time"]:
-
+		pass
 
 	return
 
 def powersound():
-
 	print("playing power sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/powerstone.wav"])
 	return
 
 def realitysound():
-
 	print("playing reality sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/realitystone.wav"])
 	return
 
 def timesound():
+	print("playing time sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/timestonelong.wav"])
 	return
 
 def spacesound():
+	print("playing space sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/spacestonefirst.wav"])
 	return
 
 def mindsound():
+	print("playing mind sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/powerstone.wav"])
 	return
 
 def soulsound():
+	print("playing soul sound")
 	call(["aplay", "/home/Gauntlet/GauntEnv/realitystone2.wav"])
 	return

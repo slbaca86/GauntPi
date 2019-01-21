@@ -3,8 +3,10 @@ import requests
 from pexpect import *
 from subprocess import Popen, call
 import time
+import json
 
-
+with open('deviceDict.txt') as devices:
+	device = json.load(f)
 
 def lightswitch():
 	return
@@ -27,11 +29,6 @@ def lockclose():
 	return
 
 
-def moondrop():#function for releasing little fake moon
-
-	return
-
-
 def formOfElecclip():
 
 	return child
@@ -44,8 +41,7 @@ def ironmanstartup():
 
 def ironmanclip():
 
-	return child, child2
-
+	return
 
 def sendcommand(engagedstones):
 

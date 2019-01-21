@@ -1,15 +1,59 @@
+#! /home/Gauntlet/.virtualenvs/Gauntlet-xis9mkqt/bin/python
 import requests
-from subprocess import call
+from pexpect import *
+from subprocess import Popen, call
 import time
+
+
+
+def lightswitch():
+	return
+
+def togglelight():
+
+	requests.get('https://maker.ifttt.com/trigger/pclight/with/key/diNLQRenat2JIQw8SKDiiy')
+	return
+
+def bubbletoggle():
+	return
+
+
+def lockopen():
+	return
+
+
+def lockclose():
+
+	return
+
+
+def moondrop():#function for releasing little fake moon
+
+	return
+
+
+def formOfElecclip():
+
+	return child
+
+
+def ironmanstartup():
+	requests.get(("http://{}:5000").format(gauntsat1))
+	return
+
+
+def ironmanclip():
+
+	return child, child2
+
 
 def sendcommand(engagedstones):
 
 	if engagedstones["Power"] and sum(engagedstones.values()) == 1:
 		print("Power only")
-		powertoggle()
+
 	if engagedstones["Soul"] and sum(engagedstones.values()) == 1:
 		print("Soul only")
-		bubbletoggle()
 	if engagedstones["Time"] and sum(engagedstones.values()) == 1:
 		print("Time only")
 	if engagedstones["Space"]and sum(engagedstones.values()) == 1:
@@ -19,9 +63,23 @@ def sendcommand(engagedstones):
 	if engagedstones["Reality"] and sum(engagedstones.values()) == 1:
 		print("Reality only")
 	if engagedstones["Soul"] and engagedstones["Power"]:
-		powertoggle()
-		time.sleep(1)
-		bubbletoggle()
+		pass
+	if engagedstones["Soul"] and engagedstones["Space"]:
+		pass
+	if engagedstones["Soul"] and engagedstones["Mind"]:
+		pass
+	if engagedstones["Soul"] and engagedstones["Time"]:
+	 	pass
+	if engagedstones["Soul"] and engagedstones["Space"]:
+		pass
+	if engagedstones["Time"] and engagedstones["Mind"]:
+		pass
+	if engagedstones["Reality"] and engagedstones["Space"]:
+		pass
+	if engagedstones["Reality"] and engagedstones["Soul"]:
+		pass
+	if engagedstones["Power"] and engagedstones["Time"]:
+
 
 	return
 

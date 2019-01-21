@@ -6,6 +6,7 @@ import threading
 import commands
 import fingerswitchtoggle
 
+# set pinmode to BCM layout for RPi
 GPIO.setmode(GPIO.BCM)
 
 ledblue = 7
@@ -31,22 +32,22 @@ for led in leds:
 
 GPIO.output(ledblue, 1)
 GPIO.output(ledyellow, 1)
-	
+
 for switch in fswitch:
 	GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-	
-	
+
+
 activestone ={"Soul":0,"Power":0,"Space":0,"Reality":0, "Mind":0, "Time":0}
 activeswitch= {"Index":0,"Thumb":0, "Middle":0, "Ring":0, "Pinky":0}
 
-		
+
 
 def selectstone():
 
 	start = time.time()
-	
+
    	try:
-	
+
 		print("Select Stones...")
 		while time.time() < start + 4 :
 			if GPIO.input(fswitchpoint)==1:
@@ -79,23 +80,23 @@ def selectstone():
 				activestone["Mind"]=1
 				commands.realitysound()
 				start = time.time()
-				
-			
+
+
 	except KeyboardInterrupt:
 		pass
 		print("exiting loop")
-	
-	finally:	
+
+	finally:
 		print ("Stone(s) selected")
 		for stone in activestone:
 			if activestone[stone] == 1:
 				print("{} is active!").format(stone)
 		return activestone
-		
-		
+
+
 def fist():
 	try:
-	
+
 		print("Ready to Activate")
 		while True:
 			if GPIO.input(fswitchpoint)==1:
@@ -108,7 +109,7 @@ def fist():
 				activeswitch["Middle"]=1
 			if GPIO.input(fswitchrng)==1:
 				activeswitch["Ring"]=1
-			count = 0	
+			count = 0
 			for switch in activeswitch:
 				if activeswitch[switch] == 1:
 					count +=1
@@ -116,31 +117,27 @@ def fist():
 				call(["aplay", "/home/pi/Documents/spacestonefirst.wav"])
 				print("Stones Engaged")
 				return
-			 
-				
+
+
 	except KeyboardInterrupt:
 			return
 
-if __name__ == "__main__":			
-	
+if __name__ == "__main__":
+
 	try:
-	
+
 		#fingerswitchtoggle.fingerswitch()
 		selectstone()
 		fist()
 		commands.sendcommand(activestone)
-		
-		
+
+
 		print(("Stone Status: {}").format(activestone))
-		
-		
+
+
 	except KeyboardInterrupt:
 			pass
 			print("Closing program and cleaning up pins")
-			
+
 	finally:
 		GPIO.cleanup()
-
-		
-
-	

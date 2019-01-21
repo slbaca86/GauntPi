@@ -26,6 +26,7 @@ fswitchmind = 24
 leds = [ledblue, ledred, ledorange, ledpurple, ledgreen, ledyellow]
 fswitch = [fswitchpoint,fswitchmid, fswitchpin, fswitchthm, fswitchrng,fswitchmind]
 
+#initialize led pins
 for led in leds:
 	GPIO.setup(led,GPIO.OUT)
 	GPIO.output(led,0)

@@ -30,11 +30,20 @@ for led in leds:
 	pwmleds.append(GPIO.PWM(led,100))
 
 for pwm in pwmleds:
-	pwm.start(0)	
-	
+	if pwm == pwmleds[0] or pwm == pwmleds[5]:
+		pwm.start(100)	
+	else: pwm.start(0)
 	
 leds = [ledblue, ledred, ledorange, ledpurple, ledgreen, ledyellow]
 
+
+for i in pwmleds:
+	if i == pwmleds[0] or i == pwmleds[5]:
+		i.ChangeDutyCycle(0)
+	else: i.ChangeDutyCycle(100)
+	time.sleep(1)
+	
+	
 
 try:
 	while 1:

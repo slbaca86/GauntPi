@@ -11,7 +11,7 @@ def lightswitch():
 
 def togglelight():
 
-	requests.get('https://maker.ifttt.com/trigger/pclight/with/key/diNLQRenat2JIQw8SKDiiy')
+	requests.get('https://maker.ifttt.com/trigger/pclight/with/key/{ifttkey}')
 	return
 
 def bubbletoggle():

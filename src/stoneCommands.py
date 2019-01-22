@@ -81,30 +81,30 @@ def sendcommand(engagedstones):
 
 def powersound():
 	print("playing power sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/powerstone.wav"])
+	call(["aplay", "./wavfiles/powerstone.wav"])
 	return
 
 def realitysound():
 	print("playing reality sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/realitystone.wav"])
+	call(["aplay", "./wavfiles/realitystone.wav"])
 	return
 
 def timesound():
 	print("playing time sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/timestonelong.wav"])
+	call(["aplay", "./wavfiles/timestonelong.wav"])
 	return
 
 def spacesound():
 	print("playing space sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/spacestonefirst.wav"])
+	call(["aplay", "./wavfiles/spacestonefirst.wav"])
 	return
 
 def mindsound():
 	print("playing mind sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/powerstone.wav"])
+	call(["aplay", "./wavfiles/powerstone.wav"])
 	return
 
 def soulsound():
 	print("playing soul sound")
-	call(["aplay", "/home/Gauntlet/GauntEnv/realitystone2.wav"])
+	call(["aplay", "./wavfiles/realitystone2.wav"])
 	return

@@ -3,6 +3,7 @@
 #main code for managing gauntlet fingerswitch sensing, LED mechanics, and decision handling
 
 
+
 import RPi.GPIO as GPIO
 import time
 from subprocess import call
@@ -158,7 +159,7 @@ def fist(ledpwms):
 					count +=1
 			if count == 5:
 				p.terminate()
-				call(["aplay", "/home/Gauntlet/GauntEnv/spacestonefirst.wav"])
+				call(["aplay", "./wavfiles/spacestonefirst.wav"])
 				print("Stones Engaged")
 
 				return

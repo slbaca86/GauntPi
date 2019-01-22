@@ -9,7 +9,7 @@ import time
 from subprocess import call
 import requests
 from multiprocessing import Process
-import stoneCommands
+import stonestoneCommands
 
 # set pinmode to BCM layout for RPi
 GPIO.setmode(GPIO.BCM)

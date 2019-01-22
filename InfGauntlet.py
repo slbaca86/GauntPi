@@ -1,20 +1,26 @@
+
+
+#main code for managing gauntlet fingerswitch sensing, LED mechanics, and decision handling
+
+
 import RPi.GPIO as GPIO
 import time
 from subprocess import call
 import requests
 from multiprocessing import Process
 import stoneCommands
-import fingerswitchtoggle
 
+# set pinmode to BCM layout for RPi
 GPIO.setmode(GPIO.BCM)
 
+#list of LEDS connected to RPI Google Voice hat
 ledblue = 7
 ledred = 4
 ledorange = 27
 ledpurple = 17
 ledgreen = 22
 ledyellow = 23
-
+#list of pins for Switches located in fingers
 fswitchpoint = 5
 fswitchmid = 13
 fswitchpin = 26
@@ -24,11 +30,14 @@ fswitchmind = 24
 
 leds = [ledblue, ledred, ledorange, ledpurple, ledgreen, ledyellow]
 fswitch = [fswitchpoint,fswitchmid, fswitchpin, fswitchthm, fswitchrng,fswitchmind]
+#blank list for holding RPi.GPIO PWM objects
 pwmleds =[]
 
+#initialize led pins
 for led in leds:
 	GPIO.setup(led,GPIO.OUT)
 
+#intiliaze input pins for switches located in fingers -
 for switch in fswitch:
 	GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
@@ -36,12 +45,15 @@ for switch in fswitch:
 activestone ={"Soul":0,"Power":0,"Space":0,"Reality":0, "Mind":0, "Time":0}
 activeswitch= {"Index":0,"Thumb":0, "Middle":0, "Ring":0, "Pinky":0}
 
+#due to hardware limitations a mixture of active high and active low pins are
+#used in the driving the leds - blue and yellow are set to high to turn them off
 def ledsoff():
 	for led in leds[1:5]:
 		GPIO.output(led,0)
 	GPIO.output(ledblue,1)
 	GPIO.output(ledyellow,1)
 
+# function that causes selected stones to "breath" or fade in and out
 def fadeinout(ledspmw):
 
 	try:
@@ -59,7 +71,9 @@ def fadeinout(ledspmw):
 	except KeyboardInterrupt:
 		return
 
-
+#function for selecting the active Stone
+# once iniatited the algorithm waits for fingerswitch signals within 4 seconds
+# after 4 seconds the selected stones are then passed on
 def selectstone():
 
 	start = time.time()
@@ -120,7 +134,7 @@ def selectstone():
 		print(pwmleds)
 		return activestone, pwmleds
 
-
+#function to detect a fist being made(i.e all 5 finger switches actuated)
 def fist(ledpwms):
 	try:
 		p = Process(target=fadeinout, args=(ledpwms,))
@@ -152,7 +166,7 @@ def fist(ledpwms):
 
 	except KeyboardInterrupt:
 			return
-
+#main function to run when file is executed
 if __name__ == "__main__":
 
 	try:
@@ -161,7 +175,7 @@ if __name__ == "__main__":
 			ledsoff()
 			pwmleds = []
 			activestone = activestone.fromkeys(activestone, 0)
-			activeswitch= activeswitch.fromkeys(activeswitch, 0)
+			activeswitch = activeswitch.fromkeys(activeswitch, 0)
 			selectstone()
 			fist(pwmleds)
 			commands.sendcommand(activestone)

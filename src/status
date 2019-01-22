@@ -1,0 +1,92 @@
+[33mcommit 839dc2c77e29578cf29b038c26a6d796f275d339[m[33m ([m[1;36mHEAD -> [m[1;32mupdateCommands[m[33m)[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Tue Jan 22 13:15:10 2019 -0700
+
+    comments added to InfGauntlet.py
+
+[33mcommit 95b98e09c881a05209951f24bcd264ba8b05d20c[m[33m ([m[1;31mGauntPi/updateCommands[m[33m)[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Mon Jan 21 11:48:57 2019 -0700
+
+    more cleaning up
+
+[33mcommit 15f4f6e1c41c9a6db6dc6a3e39e0af53bf8aec8f[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Mon Jan 21 03:10:11 2019 -0700
+
+    added device list and update commands fil
+
+[33mcommit e7a207003b1b7bf60fa25a99180939ae767c2d23[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 20:21:05 2019 -0700
+
+    updated leddim.py with stone lightup sequence
+
+[33mcommit 7d2ca69f7eccbd5374796abc836dc192f99c51e5[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 19:57:12 2019 -0700
+
+    minor commment addition
+
+[33mcommit d58c37f2553b5e1705d2cb6dd5004c23d1b7f8f4[m
+Merge: 46ed0e9 d390501
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 17:59:27 2019 -0700
+
+    Merge branch 'updateCommands' of http://github.com/slbaca86/GauntPi into updateCommands
+
+[33mcommit 46ed0e9bf09155f6082f1af7dd64aee341c29cef[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 17:58:18 2019 -0700
+
+    minor comment added
+
+[33mcommit d3905012d25fd19ce46f9a65d89bbea2f2ddf8c3[m
+Author: Sebastian Baca <slbaca86@gmail.com>
+Date:   Sun Jan 20 17:39:14 2019 -0700
+
+    Update stoneCommands.py
+
+[33mcommit d8d274164313e4efbb0663e2a45a3308b20491f1[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 17:31:50 2019 -0700
+
+    Some initial cleaning up
+     On branch updateCommands
+     Your branch is up to date with 'GauntPi/updateCommands'.
+    
+     Changes to be committed:
+            renamed:    commands.py -> stoneCommands.py
+
+[33mcommit 00e2d065c07b817c69c492dedca97350235c0f5f[m[33m ([m[1;31mGauntPi/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 3bee6d8 ce6dc97
+Author: Sebastian Baca <slbaca86@gmail.com>
+Date:   Sun Jan 20 14:01:05 2019 -0700
+
+    Merge pull request #1 from slbaca86/firstBranch
+    
+     On branch firstBranch
+
+[33mcommit ce6dc97d9b461928259c25388a833d0b88b1cbbf[m[33m ([m[1;31mGauntPi/firstBranch[m[33m, [m[1;32mfirstBranch[m[33m)[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 13:41:25 2019 -0700
+
+     On branch firstBranch
+     Changes to be committed:
+            new file:   InfGauntlet.py
+            new file:   commands.py
+            new file:   fingersall.py
+            new file:   fingerswitch.py
+            new file:   fingerswitchtoggle.py
+            new file:   leddim.py
+
+[33mcommit 3bee6d82955184b3c25637868ba286c38d4018ff[m
+Author: slbaca86 <slbaca86@gmail.com>
+Date:   Sun Jan 20 12:12:56 2019 -0700
+
+     On branch master
+    
+     Initial commit
+    
+     Changes to be committed:
+            new file:   README

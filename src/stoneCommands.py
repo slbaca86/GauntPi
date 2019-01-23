@@ -12,7 +12,7 @@ def lightswitch():
 	return
 
 def lightsOff():
-	requests.get("{}{}".format(data["devices"][3]["URL"], data["keys"][0]["URL"])
+	requests.get("{}{}".format(data["devices"][3]["URL"], data["keys"][0]["URL"]))
 	return
 
 def bubbletoggle():

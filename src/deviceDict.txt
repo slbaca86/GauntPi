@@ -28,5 +28,12 @@
       "Name" : "ReefLights",
       "URL" : "https://maker.ifttt.com/trigger/pclight/with/key/"
     }
-    ]
+    ],
+  "keys": [
+    {
+      "Name" : "iftt"
+      "key" : "541312"
+    }
+  ]
+
 }

@@ -11,9 +11,8 @@ with open('deviceDict.txt') as devices:
 def lightswitch():
 	return
 
-def togglelight():
-
-	requests.get('https://maker.ifttt.com/trigger/pclight/with/key/{ifttkey}')
+def lightsOff():
+	requests.get("{}{}".format(data["devices"][3]["URL"], data["keys"][0]["URL"])
 	return
 
 def bubbletoggle():
@@ -40,14 +39,13 @@ def ironmanstartup():
 
 
 def ironmanclip():
-
 	return
 
 def sendcommand(engagedstones):
 
 	if engagedstones["Power"] and sum(engagedstones.values()) == 1:
 		print("Power only")
-
+		lightsOff()
 	if engagedstones["Soul"] and sum(engagedstones.values()) == 1:
 		print("Soul only")
 	if engagedstones["Time"] and sum(engagedstones.values()) == 1:

@@ -2,27 +2,27 @@
   "devices": [
     {
       "Name": "GarageWifi",
-      "URL": "192.168.0.77:8080/api/relay/garage"
+      "URL": "http://192.168.0.77:80/api/relay/garage"
     },
     {
       "Name": "FPON",
-      "URL": "192.168.0.95:8080/led?params=0"
+      "URL": "http://192.168.0.95:8080/led?params=0"
     },
     {
       "Name" : "ReefLights",
-      "URL" : "192.168.0.62:8080/toggle/19"
+      "URL" : "http://192.168.0.62:8080/toggle/19"
     },
     {
       "Name" : "Allights",
-      "URL" : "https://maker.ifttt.com/trigger/pclight/with/key/"
+      "URL" : "https://maker.ifttt.com/trigger/pclightoff/with/key/"
     },
     {
       "Name" : "FPOFF",
-      "URL" : "192.168.0.95:8080/led?params=1"
+      "URL" : "http://192.168.0.95:8080/led?params=1"
     },
     {
-      "Name" : "ReefLights",
-      "URL" : "https://maker.ifttt.com/trigger/pclight/with/key/"
+      "Name" : "PClightOn",
+      "URL" : "https://maker.ifttt.com/trigger/pclighton/with/key/"
     },
     {
       "Name" : "ReefLights",
@@ -31,8 +31,8 @@
     ],
   "keys": [
     {
-      "Name" : "iftt"
-      "key" : "541312"
+      "Name" : "iftt",
+      "key" : "cFFeQYuFdsKV_9cofXGA2"
     }
   ]
 

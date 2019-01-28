@@ -6,46 +6,37 @@ import time
 import json
 
 with open('deviceDict.txt') as devices:
-	device = json.load(devices)
-
-def lightswitch():
-	return
-
-def lightsOff():
-	requests.get("{}{}".format(data["devices"][3]["URL"], data["keys"][0]["URL"])
-	return
-
-def bubbletoggle():
-	return
+	deviceDict = json.load(devices)
 
 
-def lockopen():
-	return
+def getIftttkey():
+    return deviceDict["keys"][0]["key"]
 
 
-def lockclose():
-
-	return
-
-
-def formOfElecclip():
-
-	return child
+def getDeviceURL(deviceName):
+    for dict in deviceDict["devices"]:
+            if dict["Name"] == deviceName:
+                return dict["URL"]
 
 
-def ironmanstartup():
-	requests.get(("http://{}:5000").format(gauntsat1))
-	return
+def deviceRequest(deviceName, urlFetch, keyFetch):
+    for dict in deviceDict["devices"]:
+            if dict["Name"] == deviceName:
+                if "ifttt" in dict["URL"]:
+                    print(("{}{}").format(urlFetch(deviceName), keyFetch()))
+                else:
+                    print(("{}").format(urlFetch(deviceName)))
+                    return 
+		
 
 
-def ironmanclip():
-	return
+def selectDevice(engagedstones):
 
-def sendcommand(engagedstones):
+	devices = []
 
 	if engagedstones["Power"] and sum(engagedstones.values()) == 1:
 		print("Power only")
-		lightsOff()
+		devices.append("FPON")
 	if engagedstones["Soul"] and sum(engagedstones.values()) == 1:
 		print("Soul only")
 	if engagedstones["Time"] and sum(engagedstones.values()) == 1:
@@ -75,7 +66,14 @@ def sendcommand(engagedstones):
 	if engagedstones["Power"] and engagedstones["Time"]:
 		pass
 
-	return
+	return devices
+
+def sendCommand(reqFunc, getUrlfunc, keyFunc, devList):
+    for device in devList:
+        reqFunc(device, getUrlfunc, keyFunc)
+    return
+	
+
 
 def powersound():
 	print("playing power sound")

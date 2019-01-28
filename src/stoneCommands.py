@@ -23,32 +23,36 @@ def deviceRequest(deviceName, urlFetch, keyFetch):
     for dict in deviceDict["devices"]:
             if dict["Name"] == deviceName:
                 if "ifttt" in dict["URL"]:
-                    print(("{}{}").format(urlFetch(deviceName), keyFetch()))
+                    requests.get(("{}{}").format(urlFetch(deviceName), keyFetch()))
                 else:
-                    print(("{}").format(urlFetch(deviceName)))
+                    requests.get(("{}").format(urlFetch(deviceName)))
                     return 
 		
-
-
 def selectDevice(engagedstones):
 
 	devices = []
 
 	if engagedstones["Power"] and sum(engagedstones.values()) == 1:
 		print("Power only")
-		devices.append("FPON")
+		devices.append("Allights")
 	if engagedstones["Soul"] and sum(engagedstones.values()) == 1:
 		print("Soul only")
+		devices.append("FPON")
 	if engagedstones["Time"] and sum(engagedstones.values()) == 1:
 		print("Time only")
 	if engagedstones["Space"]and sum(engagedstones.values()) == 1:
 		print("Space only")
+		devices.append("FDUL")
 	if engagedstones["Mind"] and sum(engagedstones.values()) == 1:
 		print("Mind only")
+		devices.append("familylight")	
 	if engagedstones["Reality"] and sum(engagedstones.values()) == 1:
 		print("Reality only")
+		devices.append("FPON")
 	if engagedstones["Soul"] and engagedstones["Power"]:
 		pass
+	if engagedstones["Power"] and engagedstones["Time"]:
+		devices.append("PClightOn")
 	if engagedstones["Soul"] and engagedstones["Space"]:
 		pass
 	if engagedstones["Soul"] and engagedstones["Mind"]:
@@ -72,8 +76,6 @@ def sendCommand(reqFunc, getUrlfunc, keyFunc, devList):
     for device in devList:
         reqFunc(device, getUrlfunc, keyFunc)
     return
-	
-
 
 def powersound():
 	print("playing power sound")

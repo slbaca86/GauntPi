@@ -26,8 +26,8 @@ def deviceRequest(deviceName, urlFetch, keyFetch):
                     requests.get(("{}{}").format(urlFetch(deviceName), keyFetch()))
                 else:
                     requests.get(("{}").format(urlFetch(deviceName)))
-                    return 
-		
+                    return
+
 def selectDevice(engagedstones):
 
 	devices = []
@@ -45,7 +45,7 @@ def selectDevice(engagedstones):
 		devices.append("FDUL")
 	if engagedstones["Mind"] and sum(engagedstones.values()) == 1:
 		print("Mind only")
-		devices.append("familylight")	
+		devices.append("familylight")
 	if engagedstones["Reality"] and sum(engagedstones.values()) == 1:
 		print("Reality only")
 		devices.append("FPON")
@@ -62,6 +62,7 @@ def selectDevice(engagedstones):
 	if engagedstones["Soul"] and engagedstones["Space"]:
 		pass
 	if engagedstones["Time"] and engagedstones["Mind"]:
+		devices.append("familylightoff")
 		pass
 	if engagedstones["Reality"] and engagedstones["Space"]:
 		pass

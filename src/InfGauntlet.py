@@ -1,7 +1,7 @@
 
 
 #main code for managing gauntlet fingerswitch sensing, LED mechanics, and decision handling
-
+##
 
 
 import RPi.GPIO as GPIO
@@ -173,23 +173,23 @@ if __name__ == "__main__":
 	try:
 
 		while True:
-		
+			#initialize LEDS
 			ledsoff()
-			
+
 			pwmleds = []
-			
+
 			activestone = activestone.fromkeys(activestone, 0)
-			
+
 			activeswitch = activeswitch.fromkeys(activeswitch, 0)
-			
+
 			selectstone()
-			
+
 			fist(pwmleds)
-			
+
 			deviceList = stoneCommands.selectDevice(activestone)
-			
+
 			stoneCommands.sendCommand(stoneCommands.deviceRequest, stoneCommands.getDeviceURL, stoneCommands.getIftttkey, deviceList)
-			
+
 			print(("Stone Status: {}").format(activestone))
 			time.sleep(3)
 

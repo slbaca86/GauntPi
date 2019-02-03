@@ -1,3 +1,5 @@
+#!/home/Gauntlet/.virtualenvs/GauntEnv-xis9mkqT/bin/python
+
 import time
 import RPi.GPIO as GPIO
 
@@ -34,34 +36,36 @@ for pwm in pwmleds:
 		pwm.start(100)	
 	else: pwm.start(0)
 	
-leds = [ledblue, ledred, ledorange, ledpurple, ledgreen, ledyellow]
+def startup():
 
-
-for i in pwmleds:
-	if i == pwmleds[0] or i == pwmleds[5]:
-		i.ChangeDutyCycle(0)
-	else: i.ChangeDutyCycle(100)
-	time.sleep(1)
+	for i in pwmleds:
+		if i == pwmleds[0] or i == pwmleds[5]:
+			i.ChangeDutyCycle(0)
+		else: i.ChangeDutyCycle(100)
+		time.sleep(1)
 	
 	
+def breathall():
+	try:
+		while 1:
+			for dc in range(20,100,10):
+				for i in pwmleds[1:5]:
+					i.ChangeDutyCycle(dc)
+				pwmleds[0].ChangeDutyCycle(100-dc)
+				pwmleds[5].ChangeDutyCycle(100-dc)
+				time.sleep(0.15)
+			for dc in range(100, 20,-10):
+				for i in pwmleds[1:5]:
+					i.ChangeDutyCycle(dc)
+				pwmleds[0].ChangeDutyCycle(100-dc)
+				pwmleds[5].ChangeDutyCycle(100-dc)
+				time.sleep(0.15)
+	except KeyboardInterrupt:
+		pass
 
-try:
-	while 1:
-		for dc in range(20,100,10):
-			for i in pwmleds[1:5]:
-				i.ChangeDutyCycle(dc)
-			pwmleds[0].ChangeDutyCycle(100-dc)
-			pwmleds[5].ChangeDutyCycle(100-dc)
-			time.sleep(0.15)
-		for dc in range(100, 20,-10):
-			for i in pwmleds[1:5]:
-				i.ChangeDutyCycle(dc)
-			pwmleds[0].ChangeDutyCycle(100-dc)
-			pwmleds[5].ChangeDutyCycle(100-dc)
-			time.sleep(0.15)
-except KeyboardInterrupt:
-	pass
 
+startup()
+breathall()
 
 GPIO.output(23, 1)
 GPIO.output(7, 1)
